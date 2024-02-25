@@ -20,26 +20,31 @@
     [
     'title'=>'نام کاربری',
     'id'=>'uname',
-    'type'=>'text'
+    'type'=>'text',
+    'autoFucus'=>true
     ],
     [
     'title'=>'ایمیل',
     'id'=>'email',
-    'type'=>'text'
+    'type'=>'text',
+    'autoFucus'=>false
     ],
     [
     'title'=>'رمزعبور',
     'id'=>'password',
-    'type'=>'password'
+    'type'=>'password',
+    'autoFucus'=>false
     ],
     [
     'title'=>'تکرار رمزعبور',
     'id'=>'re-password',
-    'type'=>'password'
+    'type'=>'password',
+    'autoFucus'=>false
     ],
     ] as $item)
     <label class="mt-2 md:mt-4" for="{{$item['id']}}">{{$item['title']}}</label>
-    <input type="{{$item['type']}}" 
+    <input type="{{$item['type']}}"
+    @if($item['autoFucus']) autofocus @endif
     id="{{$item['id']}}"
     class="w-full h-8 md:h-10 outline-none border-2 border-gray-200 focus:border-gray-300 rounded-md px-2" 
     dir="ltr"
@@ -48,7 +53,7 @@
 
     {{-- liner progress for display password status --}}
     <div class="w-full h-1 bg-gray-300 mt-5 rounded-md" dir="ltr">
-      <div style="width: 70%" class="bg-green-500 h-full">
+      <div style="width: 70%" class="h-full">
       </div>
     </div>
 

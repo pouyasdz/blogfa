@@ -28,7 +28,7 @@ Route::get('/account', [AccountController::class,'index']);
 
 Route::prefix('blog')->group(function () {
     Route::get('/archive', [ArchiveController::class,'index']);
-    Route::get('/post/{$slug}', [PostController::class,'index']);
+    Route::get('/post/{slug}', [PostController::class,'index']);
 });
 
 Route::prefix('auth')->group(function () {
