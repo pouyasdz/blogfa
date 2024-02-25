@@ -51,11 +51,7 @@
     >
     @endforeach
 
-    {{-- liner progress for display password status --}}
-    <div class="w-full h-1 bg-gray-300 mt-5 rounded-md" dir="ltr">
-      <div style="width: 70%" class="h-full">
-      </div>
-    </div>
+
 
     <button type="submit" 
     class="mt-auto w-full h-10 rounded-md
@@ -63,13 +59,15 @@
     bg-blue-600 text-white 
     flex justify-center items-center 
     transition-all delay-150 
-    hover:bg-blue-500 
+    hover:bg-blue-500  
     hover:shadow-blue-300
     font-black gap-3
     ">
      شروع 
   </button>
   </form>
+
+  <script src="{{asset('assets/js/wizard/script.js')}}"></script>
 </body>
 
 </html>
