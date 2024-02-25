@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\pages\AccountController;
+use App\Http\Controllers\pages\ArchiveController;
+use App\Http\Controllers\pages\AuthorizationController;
 use App\Http\Controllers\pages\HomeController;
+use App\Http\Controllers\pages\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,20 +18,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/wizard', function(){
+    return view('wizard.index');
+});
+
 Route::get('/', [HomeController::class,'index']);
+Route::get('/account', [AccountController::class,'index']);
 
-Route::get('/login', function () {
-    return view('pages.login');
+
+Route::prefix('blog')->group(function () {
+    Route::get('/archive', [ArchiveController::class,'index']);
+    Route::get('/post/{$slug}', [PostController::class,'index']);
 });
 
-Route::get('/archive', function () {
-    return view('pages.archive');
+Route::prefix('auth')->group(function () {
+    Route::get('/login' , [AuthorizationController::class,'login']);
+    Route::get('/register' , [AuthorizationController::class,'register']);
+    Route::get('/forget-password' , [AuthorizationController::class,'forgetPassword']);
 });
 
-Route::get('/account', function () {
-    return view('pages.account');
-});
-
-Route::get('/post', function () {
-    return view('pages.post');
-});
