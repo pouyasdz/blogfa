@@ -1,18 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\pages;
+namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AuthorizationController extends Controller
+class AuthController extends Controller
 {
+    public function index(){
+        return view("auth.login");
+    }
+
     public function register(){
         return view("auth.register");
     }
-    public function login(){
-        return view("auth.login");
-    }
+
     public function forgetPassword(){
         return view("auth.forgetPassword");
     }
