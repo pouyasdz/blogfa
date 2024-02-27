@@ -13,7 +13,9 @@
 <body class="w-screen h-screen bg-gradient-to-r from-blue-800 to-indigo-900 flex flex-col items-center justify-center font-vazir">
   <h1 class="mb-1 text-white text-2xl font-black ">👋 خوش آمدید</h1>
   <h2 class="m-2 text-white text-xl font-bold ">نصب کننده مالک وبلاگ</h2>
-  <form class="w-80 h-96 md:w-500 md:h-500 bg-white rounded-xl border-2 border-gray-300 flex flex-col p-3 " dir="rtl">
+  <form class="w-80 h-96 md:w-500 md:h-500 bg-white rounded-xl border-2 border-gray-300 flex flex-col p-3 " dir="rtl" method="POST" action="{{ route('wizard_post') }}">
+
+    @csrf
 
     @foreach (
     [
@@ -37,7 +39,7 @@
     ],
     [
     'title'=>'تکرار رمزعبور',
-    'id'=>'re-password',
+    'id'=>'password_confirmation',
     'type'=>'password',
     'autoFucus'=>false
     ],
@@ -48,7 +50,11 @@
     id="{{$item['id']}}"
     class="w-full h-8 md:h-10 outline-none border-2 border-gray-200 focus:border-gray-300 rounded-md px-2" 
     dir="ltr"
+    name="{{$item['id']}}"
     >
+    @error($item['id'])
+        <span class="text-red-500 font-bold text-sm">{{$message}}</span>
+    @enderror
     @endforeach
 
 
