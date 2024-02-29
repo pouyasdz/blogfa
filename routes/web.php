@@ -35,5 +35,7 @@ Route::prefix('auth')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::get('/forget-password', [AuthController::class, 'forgetPassword'])->name('forget-password');
+    Route::get('/otp', [AuthController::class, 'otp'])->name('otp');
+    Route::get('/reset-success', [AuthController::class, 'resetSuccessFull'])->name('reset-success');
 });
 

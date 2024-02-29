@@ -20,17 +20,17 @@
 
         {{-- steps --}}
         <div class="flex flex-col items-center gap-3 mt-10" dir="rtl">
-            <h3 class="text-base font-semibold text-gray-600">مرحله اول: پیدا کردن حساب</h3>
+            <h3 class="text-base font-semibold text-gray-600">مرحله دوم: ارسال کد تایید</h3>
             <div class="flex gap-3">
                 <span class="w-12 h-2 rounded-sm bg-violet-500"></span>
-                <span class="w-12 h-2 rounded-sm bg-violet-300"></span>
+                <span class="w-12 h-2 rounded-sm bg-violet-500"></span>
                 <span class="w-12 h-2 rounded-sm bg-violet-300"></span>
             </div>
         </div>
         {{-- end steps --}}
 
         <input type="text"
-            placeholder="آدرس ایمیل"
+            placeholder="کد تایید"
             class="w-full h-10 
                 outline-none border-2
                 transition-colors

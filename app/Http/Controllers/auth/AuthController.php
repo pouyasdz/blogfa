@@ -18,4 +18,12 @@ class AuthController extends Controller
     public function forgetPassword(){
         return view("auth.forgetPassword");
     }
+
+    public function otp(){
+        return view("auth.otp");
+    }
+
+    public function resetSuccessFull(){
+        return view("auth.resetSuccess");
+    }
 }
