@@ -47,7 +47,8 @@
             <div id="input-controller"
                 class="flex mt-5 outline-none border-2
                 border-gray-200 
-                focus:border-blue-500 
+                focus:border-blue-500
+                pl-1 
                 rounded-md">
                 <input type="password"
                     class="w-full h-10 
@@ -57,8 +58,8 @@
             </div>
 
             <div class="flex w-full items-center justify-between mt-5" dir="rtl">
-                <a href="" class="text-right text-sm text-blue-500 font-bold">حساب کاربری ندارید ؟ ثبت نام</a>
-                <a href="" class="text-right text-sm text-red-500 font-bold">فراموشی رمز عبور !</a>
+                <a href="{{route('register')}}" class="text-right text-sm text-blue-500 font-bold">حساب کاربری ندارید ؟ ثبت نام</a>
+                <a href="{{route('forget-password')}}" class="text-right text-sm text-red-500 font-bold">فراموشی رمز عبور !</a>
             </div>
 
             <div class="mt-auto flex flex-col w-full gap-5">

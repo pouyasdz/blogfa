@@ -21,7 +21,7 @@
     [
     [
     'title'=>'نام کاربری',
-    'id'=>'uname',
+    'id'=>'username',
     'type'=>'text',
     'autoFucus'=>true
     ],

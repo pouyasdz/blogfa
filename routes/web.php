@@ -33,9 +33,13 @@ Route::prefix('blog')->group(function () {
 
 Route::prefix('auth')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
-    Route::get('/register', [AuthController::class, 'register'])->name('register');
-    Route::get('/forget-password', [AuthController::class, 'forgetPassword'])->name('forget-password');
-    Route::get('/otp', [AuthController::class, 'otp'])->name('otp');
-    Route::get('/reset-success', [AuthController::class, 'resetSuccessFull'])->name('reset-success');
+    Route::get('/register', [AuthController::class, 'registerGet'])->name('register');
+    Route::post('/register', [AuthController::class, 'registerPost'])->name('register_post');
+    Route::prefix('forget-password')->group(function () {
+        Route::get('/step-one', [AuthController::class, 'forgetPassword'])->name('forget-password');
+        Route::get('/step-tow', [AuthController::class, 'otp'])->name('otp');
+        Route::get('/step-thre', [AuthController::class, 'resetSuccessFull'])->name('reset-success');
+
+    });
 });
 
