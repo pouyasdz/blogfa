@@ -59,7 +59,7 @@
                 "
                 name="username" placeholder="نام کاربری">
             @error('username')
-                <span class="text-red-500 font-bold text-sm">{{ $message }}</span>
+                <span class="text-red-500 font-bold text-sm text-right">{{ $message }}</span>
             @enderror
             <input type="text"
                 class="w-full h-10 
@@ -73,7 +73,7 @@
                 "
                 name="email" placeholder="ایمیل">
             @error('email')
-                <span class="text-red-500 font-bold text-sm">{{ $message }}</span>
+                <span class="text-red-500 font-bold text-sm text-right">{{ $message }}</span>
             @enderror
             <div id="input-controller"
                 class="flex mt-10 outline-none border-2
@@ -88,7 +88,7 @@
                 <button type="button"><i class="ri-eye-line text-xl text-blue-600 mr-2"></i></button>
             </div>
             @error('password')
-                <span class="text-red-500 font-bold text-sm">{{ $message }}</span>
+                <span class="text-red-500 font-bold text-sm text-right">{{ $message }}</span>
             @enderror
 
             <a href="{{ route('login') }}" class="text-right mt-3 text-sm text-blue-500 font-bold">حساب کاربری دارید ؟

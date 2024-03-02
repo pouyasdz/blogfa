@@ -23,7 +23,7 @@ Route::get('/wizard/install-successfull',function(){return view("wizard.finish")
 Route::post('/wizard', [WizardController::class,'store'])->name('wizard_post');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/account', [AccountController::class, 'index'])->name("account");
+Route::get('/account', [AccountController::class, 'index'])->name("account")->middleware("user_login");
 
 
 Route::prefix('blog')->group(function () {
@@ -33,6 +33,8 @@ Route::prefix('blog')->group(function () {
 
 Route::prefix('auth')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('login_post');
+    Route::get('/logout', [AuthController::class,'logout'])->name("logout");
     Route::get('/register', [AuthController::class, 'registerGet'])->name('register');
     Route::post('/register', [AuthController::class, 'registerPost'])->name('register_post');
     Route::prefix('forget-password')->group(function () {
