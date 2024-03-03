@@ -14,7 +14,7 @@
 </head>
 
 <body
-    class="font-vazir w-screen h-screen flex justify-center items-center bg-gradient-to-r from-violet-500 to-purple-500">
+    class="font-vazir w-screen h-screen flex justify-center items-center bg-gradient-to-r from-emerald-500 to-emerald-900">
     <form action="" class="w-full md:w-400 h-600 mx-5 rounded-xl bg-white shadow-xl flex flex-col p-5 items-center">
         <h3 class="text-center text-gray-700 text-lg font-black" dir="rtl">تمام !</h3>
 
@@ -22,9 +22,9 @@
         <div class="flex flex-col items-center gap-3 mt-10" dir="rtl">
             <h3 class="text-base font-semibold text-gray-600">مرحله سوم : تغیر رمز عبور</h3>
             <div class="flex gap-3">
-                <span class="w-12 h-2 rounded-sm bg-violet-500"></span>
-                <span class="w-12 h-2 rounded-sm bg-violet-500"></span>
-                <span class="w-12 h-2 rounded-sm bg-violet-500"></span>
+                <span class="w-12 h-2 rounded-sm bg-yellow-500"></span>
+                <span class="w-12 h-2 rounded-sm bg-yellow-500"></span>
+                <span class="w-12 h-2 rounded-sm bg-yellow-500"></span>
             </div>
         </div>
         {{-- end steps --}}
