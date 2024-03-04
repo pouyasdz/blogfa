@@ -22,14 +22,14 @@
             <div class="flex flex-col w-400 h-auto gap-2 " dir="rtl">
                 <h1 class="text-4xl font-black text-white">به بلاگ فا خوش آمدید</h1>
                 <p class="text-white text-lg font-semibold">با عضویت در سایت شما هم عضو خانواده بلاگ فا شوید</p>
-                <img src="{{ asset('assets/images/stars.png') }}" class="absolute w-300 bottom-1 right-1">
-                <img src="{{ asset('assets/images/feed.png') }}" class="absolute w-400 top-1 left-1">
+                <img src="{{ asset('assets/images/stars.png') }}" class="absolute w-300 bottom-1 right-1 ">
+                <img src="{{ asset('assets/images/feed.png') }}" class="absolute w-200 md:w-300 top-1 left-1">
             </div>
         </div>
         <form
         method="POST"
         action="{{route('register_post')}}"
-            class="flex flex-col w-full md:w-2/4 lg:w-2/4 xl:w-1/4  h-full md:h-600 px-3 py-2 md:my-auto md:mx-auto md:shadow-2xl md:rounded-3xl">
+            class="flex flex-col w-full md:w-2/4 lg:w-2/4 xl:w-2/6  h-full md:h-600 px-3 py-2 md:my-auto md:mx-auto md:shadow-2xl md:rounded-3xl">
             @csrf
 
             @if (Session::has('success'))

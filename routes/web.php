@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\account\AccountController;
 use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\auth\ForgetPasswordController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\blog\BlogController;
@@ -43,11 +44,11 @@ Route::prefix('auth')->group(function () {
     Route::post('/register', [RegisterController::class, 'store'])->name('register_post');
 
     Route::prefix('forget-password')->group(function () {
-        Route::get('/step-one', [ForgetPasswordRequest::class, 'index'])->name('forget-password');
-        Route::post('/step-one', [ForgetPasswordRequest::class, 'redirectToStepTow'])->name('forget-password_post');
-        Route::get('/step-tow', [ForgetPasswordRequest::class, 'viewStepTow'])->name('otp');
-        Route::post('/step-tow', [ForgetPasswordRequest::class, 'redirectToStepThree'])->name('otp_post');
-        Route::get('/step-thre', [ForgetPasswordRequest::class, 'viewStepThree'])->name('reset-success');
+        Route::get('/step-one', [ForgetPasswordController::class, 'index'])->name('forget-password');
+        Route::post('/step-one', [ForgetPasswordController::class, 'redirectToStepTow'])->name('forget-password_post');
+        Route::get('/step-tow', [ForgetPasswordController::class, 'viewStepTow'])->name('otp');
+        Route::post('/step-tow', [ForgetPasswordController::class, 'redirectToStepThree'])->name('otp_post');
+        Route::get('/step-thre', [ForgetPasswordController::class, 'viewStepThree'])->name('reset-success');
     });
 });
 

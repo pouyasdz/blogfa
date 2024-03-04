@@ -22,7 +22,7 @@ class WizardController extends Controller
     public function store(WizardRequest $request){
         if($this->checkAdminExists())return redirect()->route("wizard-finish");
         User::query()->create([
-            "username"=> $request->uname,
+            "username"=> $request->username,
             "email"=> $request->email,
             "password"=> bcrypt($request->password),
             "role"=>"ADMIN"

@@ -23,11 +23,11 @@
                 <h1 class="text-4xl font-black text-white">دلمون برات تنگ شده بود</h1>
                 <p class="text-white text-lg font-semibold">این چند وقته که نبودی دل ما برات تنگ شده بود ممنون که برگشتی
                 </p>
-                <img src="{{ asset('assets/images/heart-in-hand.png') }}" class="absolute w-300 bottom-0 left-1">
+                <img src="{{ asset('assets/images/heart-in-hand.png') }}" class="absolute w-100  md:w-200 bottom-0 left-1">
             </div>
         </div>
         <form
-            class="flex flex-col w-full md:w-2/4 lg:w-2/4 xl:w-1/4  h-full md:h-600 px-3 py-2 md:my-auto md:mx-auto md:shadow-2xl md:rounded-3xl"
+            class="flex flex-col w-full md:w-2/4 lg:w-2/4 xl:w-2/6 h-full md:h-600 px-3 py-2 md:my-auto md:mx-auto md:shadow-2xl md:rounded-3xl"
             method="POST" action="{{ route('login_post') }}">
 
             @csrf
