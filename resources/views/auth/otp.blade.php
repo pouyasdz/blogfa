@@ -15,7 +15,8 @@
 
 <body
     class="font-vazir w-screen h-screen flex justify-center items-center bg-gradient-to-r from-violet-700 to-blue-800">
-    <form action="" class="w-full md:w-400 h-600 mx-5 rounded-xl bg-white shadow-xl flex flex-col p-5 items-center">
+    <form action="{{route("forget_password_otp_post")}}" class="w-full md:w-400 h-600 mx-5 rounded-xl bg-white shadow-xl flex flex-col p-5 items-center" method="POST">
+        @csrf
         <h3 class="text-center text-gray-700 text-lg font-black">نگران نباش رمز جدیدتو ایمیل میکنیم</h3>
 
         {{-- steps --}}

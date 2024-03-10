@@ -16,7 +16,9 @@ class ForgetPasswordController extends Controller
         return view("auth.forgetPassword");
     }
     public function redirectToStepTow(ForgetPasswordRequest $request){
-        return redirect()->route("otp");
+        $otp = getRandomDigist(6);
+        
+        return redirect()->route("forget_password_otp");
     }
     /**
      * step-tow

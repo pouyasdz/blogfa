@@ -19,7 +19,7 @@ class ForgetPasswordRequest extends FormRequest
         return[
             'email.email' => 'ایمیل معتبر نیست',
             'email.required' => 'ایمیل معتبر نیست',
-            'email.exist' => 'ایمیل ثبت نشده',
+            'email.exists' => 'ایمیل ثبت نشده',
         ];
     }
 }

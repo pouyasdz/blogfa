@@ -45,9 +45,9 @@ Route::prefix('auth')->group(function () {
 
     Route::prefix('forget-password')->group(function () {
         Route::get('/step-one', [ForgetPasswordController::class, 'index'])->name('forget-password');
-        Route::post('/step-one', [ForgetPasswordController::class, 'redirectToStepTow'])->name('forget-password_post');
-        Route::get('/step-tow', [ForgetPasswordController::class, 'viewStepTow'])->name('otp');
-        Route::post('/step-tow', [ForgetPasswordController::class, 'redirectToStepThree'])->name('otp_post');
+        Route::post('/step-one', [ForgetPasswordController::class, 'redirectToStepTow'])->name('forget_password_post');
+        Route::get('/step-tow', [ForgetPasswordController::class, 'viewStepTow'])->name('forget_password_otp');
+        Route::post('/step-tow', [ForgetPasswordController::class, 'redirectToStepThree'])->name('forget_password_otp_post');
         Route::get('/step-thre', [ForgetPasswordController::class, 'viewStepThree'])->name('reset-success');
     });
 });
