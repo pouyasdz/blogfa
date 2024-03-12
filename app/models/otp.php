@@ -10,7 +10,7 @@ class otp extends Model
     use HasFactory;
     protected $fillable = [
         'for',
-        'expire',
+        'expTime',
         'code',
     ] ;
 }

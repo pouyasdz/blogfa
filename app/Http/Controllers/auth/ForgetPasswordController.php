@@ -4,8 +4,10 @@ namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ForgetPasswordRequest;
+use App\Models\otp;
+use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Carbon;
 class ForgetPasswordController extends Controller
 {
     /**
@@ -16,8 +18,13 @@ class ForgetPasswordController extends Controller
         return view("auth.forgetPassword");
     }
     public function redirectToStepTow(ForgetPasswordRequest $request){
-        $otp = getRandomDigist(6);
-        
+        $otp = getRandomDigist();
+        $user = User::query()->where("email", "=", $request->email)->firstOrFail();
+        otp::query()->create([
+            "for"=>$user->id,
+            "expTime"=>Carbon::now()->timestamp + 90,
+            "code"=>bcrypt($otp)
+        ]);
         return redirect()->route("forget_password_otp");
     }
     /**
