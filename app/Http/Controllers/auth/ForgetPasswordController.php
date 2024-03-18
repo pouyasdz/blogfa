@@ -19,10 +19,11 @@ class ForgetPasswordController extends Controller
     }
     public function redirectToStepTow(ForgetPasswordRequest $request){
         $otp = getRandomDigist();
+        $now = Carbon::now();
         $user = User::query()->where("email", "=", $request->email)->firstOrFail();
         otp::query()->create([
             "for"=>$user->id,
-            "expTime"=>Carbon::now()->timestamp + 90,
+            "expTime"=>$now->addSeconds(90),
             "code"=>bcrypt($otp)
         ]);
         return redirect()->route("forget_password_otp");
@@ -34,8 +35,9 @@ class ForgetPasswordController extends Controller
     {
         return view("auth.otp");
     }
-    public function redirectToStepThree()
+    public function redirectToStepThree(Request $request)
     {
+        $otp = otp::query()->where("email", "=", $request->otp)->firstOrFail();
         return redirect()->route("reset-success");
     }
 
