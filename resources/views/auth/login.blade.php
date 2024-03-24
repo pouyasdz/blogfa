@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <main class="flex w-screen h-screen font-vazir md:justify-between ">
+    <main class="flex w-screen h-screen ~ md:justify-between ">
         <div
             class="hidden md:flex flex-col relative
         w-1/2 h-full bg-gradient-to-r 
