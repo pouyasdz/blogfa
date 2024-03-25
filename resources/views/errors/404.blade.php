@@ -9,8 +9,8 @@
     <title>404</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-sans font-vazir">
-    <div class="flex items-center justify-center min-h-screen from-gray-800 via-greeen-300 to-blue-500 bg-gradient-to-br font-sans font-vazir">
+<body class="font-vazir">
+    <div class="flex items-center justify-center min-h-screen from-gray-800 via-greeen-300 to-blue-500 bg-gradient-to-br font-vazir">
         <div class="bg-white border border-gray-200 flex flex-col items-center justify-center px-4 md:px-8 lg:px-24 py-8 rounded-lg shadow-2xl">
             <p class="text-6xl md:text-7xl lg:text-9xl font-bold tracking-wider text-gray-300">404</p>
             <p class="text-2xl md:text-3xl lg:text-5xl font-bold tracking-wider text-gray-500 mt-4">صفحه یافت نشد</p>

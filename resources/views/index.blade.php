@@ -10,9 +10,12 @@
         <title>بلاگ فا</title>
       </head>
 </head>
-<body>
+<body class="flex flex-col w-full h-screen">
     @include('components/header')
     @yield('main')
-    @include('components/footer')
+    
+    <div class="mt-auto">
+        @include('components/footer')
+    </div>
 </body>
 </html>
