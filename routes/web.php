@@ -36,11 +36,11 @@ Route::prefix('blog')->group(function () {
 });
 
 Route::prefix('auth')->group(function () {
-    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware("auth_page");
     Route::post('/login', [LoginController::class, 'store'])->name('login_post');
     Route::get('/logout', [LoginController::class,'destroy'])->name("logout");
 
-    Route::get('/register', [RegisterController::class, 'index'])->name('register');
+    Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware("auth_page");
     Route::post('/register', [RegisterController::class, 'store'])->name('register_post');
 
     Route::prefix('forget-password')->group(function () {
