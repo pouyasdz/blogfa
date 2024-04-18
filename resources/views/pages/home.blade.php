@@ -1,5 +1,9 @@
 @extends('index')
 
+@section('title')
+    خانه
+@endsection
+
 @section('main')
     <main class="container mx-auto font-vazir">
         <div class="flex flex-col sm:flex-row sm:justify-center w-full h-max items-center px-3">
