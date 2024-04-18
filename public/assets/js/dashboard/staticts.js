@@ -39,6 +39,7 @@ sidebarData.map((item) => {
     <li 
     class="flex items-center 
     md:text-sm lg:text-lg w-full 
+    font-bold
     md:w-10/12 md:mx-auto 
     pl-0 md:pl-5
     transition-colors
