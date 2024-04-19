@@ -38,10 +38,10 @@ sidebarData.map((item) => {
     `
     <li 
     class="flex items-center 
-    md:text-sm lg:text-lg w-full 
+    md:text-sm xl:text-lg w-full 
     font-bold
     md:w-10/12 md:mx-auto 
-    pl-0 md:pl-5
+    pl-0 md:pl-3 lg:pl-4 xl:pl-5
     transition-colors
     delay-150 
     active:border-r-2

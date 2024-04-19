@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/globals.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fonts/remixicon.css') }}">
     @vite('resources/css/app.css')
-    <title>داشبورد | @yield("title")</title>
+    <title>داشبورد | @yield('title')</title>
 </head>
 
 <body class="w-full h-screen max-h-screen flex bg-gray-900">
@@ -18,7 +18,10 @@
         @include('components/DashboardHeader')
         @yield('main')
     </div>
-    <script src="{{asset("assets/js/dashboard/staticts.js")}}"></script>
+
+    <script src="{{ asset('assets/js/dashboard/staticts.js') }}"></script>
+    <script src="{{ asset('assets/js/autoHideScroll.js')}}"></script>
+    <script src="{{ asset('assets/js/persianNumber.js')}}"></script>
 </body>
 
 </html>
