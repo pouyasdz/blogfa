@@ -29,6 +29,9 @@ Route::post('/wizard', [WizardController::class,'store'])->name('wizard_post');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/account', [AccountController::class, 'index'])->name("account")->middleware("user_login");
 
+Route::prefix('blogfa-dashboard')->group(function(){
+    Route::get('/', function(){ return view("dashboard.index");});
+});
 
 Route::prefix('blog')->group(function () {
     Route::get('/archive', [BlogController::class, 'index'])->name("archive");

@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="{{asset('assets/css/globals.css')}}">
         <link rel="stylesheet" href="{{asset('assets/fonts/remixicon.css')}}">
         @vite('resources/css/app.css')
-        <title>بلاگ فا</title>
+        <title>بلاگ فا | @yield("title")</title>
       </head>
 </head>
 <body class="flex flex-col w-full h-screen">
