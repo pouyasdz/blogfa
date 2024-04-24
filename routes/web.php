@@ -29,7 +29,7 @@ Route::post('/wizard', [WizardController::class,'store'])->name('wizard_post');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/account', [AccountController::class, 'index'])->name("account")->middleware("user_login");
 
-Route::prefix('blogfa-dashboard')->group(function(){
+Route::group(['prefix'=>'dashboard', 'middleware'=>['user_login', 'dashboard_access']], function(){
     Route::get('/', function(){ return view("dashboard.index");});
 });
 
