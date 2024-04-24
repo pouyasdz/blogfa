@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AdminAccess;
 use App\Http\Middleware\AuthPage;
 use App\Http\Middleware\dashboard;
 use App\Http\Middleware\userLogin;
@@ -70,5 +71,6 @@ class Kernel extends HttpKernel
         'user_login'=>userLogin::class,
         'auth_page'=>AuthPage::class,
         'dashboard_access'=>dashboard::class,
+        'admin_access'=>AdminAccess::class,
     ];
 }

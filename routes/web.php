@@ -29,8 +29,32 @@ Route::post('/wizard', [WizardController::class,'store'])->name('wizard_post');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/account', [AccountController::class, 'index'])->name("account")->middleware("user_login");
 
-Route::group(['prefix'=>'dashboard', 'middleware'=>['user_login', 'dashboard_access']], function(){
+Route::group(['prefix'=>'dashboard', 'middleware'=> ['user_login', 'dashboard_access'] ], function(){
     Route::get('/', function(){ return view("dashboard.index");});
+    Route::get('/posts', function(){})->middleware('admin_access');
+
+    
+    // CRUD - user
+    Route::group(['prefix'=> 'user','middleware'=> ['admin_access'] ], function(){
+        Route::get("/all", function(){ return view("");});
+        Route::post("/create-user", function(){ });
+        Route::put("/update-user", function(){ });
+        Route::delete("/delete-user", function(){ });
+    });
+    
+    // CRUD - post
+    Route::group(["prefix"=> "post" ], function(){
+        Route::get("/my-post", function(){ return view("");});
+        Route::post("/create-post", function(){ });
+        Route::put("/update-post", function(){ });
+        Route::delete("/delete-post", function(){ });
+    });
+    
+    // profile
+    Route::get("/profile", function(){ return view("");});
+    
+    // logout
+    Route::get("/logout", function(){ return view("");});
 });
 
 Route::prefix('blog')->group(function () {
