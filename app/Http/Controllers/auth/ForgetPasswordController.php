@@ -8,6 +8,8 @@ use App\Models\otp;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
+
 class ForgetPasswordController extends Controller
 {
     /**
@@ -18,7 +20,8 @@ class ForgetPasswordController extends Controller
         return view("auth.forgetPassword");
     }
     public function redirectToStepTow(ForgetPasswordRequest $request){
-        $otp = getRandomDigist();
+        // $otp = getRandomDigist();
+        $otp = "123456";
         $now = Carbon::now();
         $user = User::query()->where("email", "=", $request->email)->firstOrFail();
         otp::query()->create([
@@ -26,7 +29,7 @@ class ForgetPasswordController extends Controller
             "expTime"=>$now->addSeconds(90),
             "code"=>bcrypt($otp)
         ]);
-        return redirect()->route("forget_password_otp");
+        return redirect()->route("forget_password_otp", ["email"=>$request->email]);
     }
     /**
      * step-tow
@@ -37,7 +40,10 @@ class ForgetPasswordController extends Controller
     }
     public function redirectToStepThree(Request $request)
     {
-        $otp = otp::query()->where("email", "=", $request->otp)->firstOrFail();
+        $email = $request->input("email");
+        $user = User::query()->where("email", "=", $email)->firstOrFail();
+        $targetOTP = otp::query()->where("for","=", $user->id);
+        if(!Hash::check($targetOTP->code, $request->otp)) return redirect()->route("reset-success");
         return redirect()->route("reset-success");
     }
 

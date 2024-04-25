@@ -6,6 +6,10 @@ use App\Http\Controllers\auth\ForgetPasswordController;
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\blog\BlogController;
+use App\Http\Controllers\dashboard\AdminController;
+use App\Http\Controllers\dashboard\PostController;
+use App\Http\Controllers\dashboard\ProfileController;
+use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\pages\HomeController;
 use App\Http\Controllers\wizard\WizardController;
 use App\Http\Requests\ForgetPasswordRequest;
@@ -30,31 +34,32 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/account', [AccountController::class, 'index'])->name("account")->middleware("user_login");
 
 Route::group(['prefix'=>'dashboard', 'middleware'=> ['user_login', 'dashboard_access'] ], function(){
-    Route::get('/', function(){ return view("dashboard.index");});
-    Route::get('/posts', function(){})->middleware('admin_access');
+    Route::get('/', [AdminController::class, "index"]);
+    Route::get('/posts', [AdminController::class, "show"])->middleware('admin_access');
 
     
     // CRUD - user
     Route::group(['prefix'=> 'user','middleware'=> ['admin_access'] ], function(){
-        Route::get("/all", function(){ return view("");});
-        Route::post("/create-user", function(){ });
-        Route::put("/update-user", function(){ });
-        Route::delete("/delete-user", function(){ });
+        Route::get("/{id}", [UserController::class, "show"]);
+        Route::get("/all", [UserController::class,"index"]);
+        Route::post("/create-user", [UserController::class,"store"]);
+        Route::put("/update-user", [UserController::class,"update"]);
+        Route::delete("/delete-user", [UserController::class, "destroy"]);
     });
     
     // CRUD - post
     Route::group(["prefix"=> "post" ], function(){
-        Route::get("/my-post", function(){ return view("");});
-        Route::post("/create-post", function(){ });
-        Route::put("/update-post", function(){ });
-        Route::delete("/delete-post", function(){ });
+        Route::get("/my-post", [PostController::class,"index"]);
+        Route::post("/create-post", [PostController::class,"store"]);
+        Route::put("/update-post", [PostController::class,"update"]);
+        Route::delete("/delete-post", [PostController::class,"destroy"]);
     });
     
     // profile
-    Route::get("/profile", function(){ return view("");});
+    Route::get("/profile", [ProfileController::class, "index"]);
     
     // logout
-    Route::get("/logout", function(){ return view("");});
+    Route::get("/logout", [ProfileController::class, "destroy"]);
 });
 
 Route::prefix('blog')->group(function () {

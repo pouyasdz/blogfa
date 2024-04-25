@@ -40,7 +40,8 @@
                 focus:border-blue-500 
                 rounded-md px-2 mt-10
                 placeholder:text-right
-                ">
+                "
+                name="otp">
 
                 <button type="submit" class="w-full mt-auto bg-green-500 transition-colors delay-150 hover:bg-green-700 text-white py-2 rounded-xl font-black">مرحله بعد</button>
 
