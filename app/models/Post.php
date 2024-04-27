@@ -12,7 +12,6 @@ class Post extends Model
        'author',
        'slug',
        'title',
-       'comments',
        'view',
        'cover',
        'description',

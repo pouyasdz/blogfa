@@ -4,6 +4,9 @@ namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\user\UpdateRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
 {
@@ -12,38 +15,19 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        return view("");
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRequest $request, string $id)
     {
-        //
-    }
+        $user = User::query()->where("id", $id)->firstOrFail();
+        if($request->email) $user->email = $request->email;
+        if($request->password) $user->password = bcrypt($request->password);
+        $user->save();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        Session::flash("message","تغیرات با موفقیت اعمال شد");
     }
 }

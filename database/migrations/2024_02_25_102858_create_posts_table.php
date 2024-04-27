@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('title');
             $table->text('description');
-            $table->string('comments')->nullable();
             $table->integer('view')->default(0);
             $table->text('cover')->nullable();
         });
