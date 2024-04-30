@@ -17,6 +17,7 @@
     <div class="flex flex-col w-5/6 md:w-9/12 lg:w-5/6 container mx-auto h-full">
         @include('components/DashboardHeader')
         @yield('main')
+
     </div>
 
     <script src="{{ asset('assets/js/dashboard/staticts.js') }}"></script>
