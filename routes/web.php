@@ -7,10 +7,11 @@ use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\blog\BlogController;
 use App\Http\Controllers\dashboard\AdminController;
+use App\Http\Controllers\dashboard\DashboardProfileController;
 use App\Http\Controllers\dashboard\PostController;
-use App\Http\Controllers\dashboard\ProfileController;
 use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\pages\HomeController;
+use App\Http\Controllers\profile\ProfileController;
 use App\Http\Controllers\wizard\WizardController;
 use App\Http\Requests\ForgetPasswordRequest;
 use Illuminate\Support\Facades\Route;
@@ -57,10 +58,10 @@ Route::group(['prefix'=>'dashboard', 'middleware'=> ['user_login', 'dashboard_ac
     });
     
     // profile
-    Route::get("/profile", [ProfileController::class, "index"]);
+    Route::get("/profile", [DashboardProfileController::class, "index"]);
     
     // logout
-    Route::get("/logout", [ProfileController::class, "destroy"]);
+    Route::get("/logout", [DashboardProfileController::class, "destroy"]);
 });
 
 Route::prefix('blog')->group(function () {

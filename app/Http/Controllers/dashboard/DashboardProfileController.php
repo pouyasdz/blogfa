@@ -8,7 +8,7 @@ use App\Http\Requests\user\UpdateRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 
-class ProfileController extends Controller
+class DashboardProfileController extends Controller
 {
     /**
      * Display a listing of the resource.

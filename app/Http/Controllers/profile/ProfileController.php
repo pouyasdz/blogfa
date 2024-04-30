@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\profile;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,11 +13,16 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request)
+    public function show($username)
     {
-        $username = $request->input("username");
         $user = User::where("username",$username)->first();
-        if(!$user) return view("page.profile")->with("error","شناسه کاربر نا معتبر است");
+        if(!$user) return view("pages.profile", [
+            "error"=> true ,
+            "message"=> "$username  شناسه کاربر نامعتبر است"
+        ]);
+
+        $posts = Post::where("author", "=", $user->id)->get();
+
         $user = [
             "username"=> $user->username,
             "first_name"=> $user->first_name,
@@ -24,7 +30,12 @@ class ProfileController extends Controller
             "about"=> $user->about,
             "profile" => $user->profile,
         ];
-        return view("page.profile", compact('user'));
+        
+        return view("pages.profile", [
+            "error"=>false,
+            "user"=>$user,
+            "posts"=>$posts
+        ]);
     }
 
 }
