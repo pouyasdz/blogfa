@@ -15,7 +15,7 @@ class AdminAccess
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->user()->role !== "ADMIN") return redirect()->route("home");
+        if(auth()->user()->role !== "ADMIN") abort(403);
         return $next($request);
     }
 }

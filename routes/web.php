@@ -13,7 +13,6 @@ use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\pages\HomeController;
 use App\Http\Controllers\profile\ProfileController;
 use App\Http\Controllers\wizard\WizardController;
-use App\Http\Requests\ForgetPasswordRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,7 +35,7 @@ Route::get('/account', [AccountController::class, 'index'])->name("account")->mi
 Route::get('/profile/{username}', [ProfileController::class,'show'])->name('profile');
 
 Route::group(['prefix'=>'dashboard', 'middleware'=> ['user_login', 'dashboard_access'] ], function(){
-    Route::get('/', [AdminController::class, "index"]);
+    Route::get('/', [AdminController::class, "index"])->name("dashboard");
     Route::get('/posts', [AdminController::class, "show"])->middleware('admin_access');
 
     
@@ -51,7 +50,8 @@ Route::group(['prefix'=>'dashboard', 'middleware'=> ['user_login', 'dashboard_ac
     
     // CRUD - post
     Route::group(["prefix"=> "post" ], function(){
-        Route::get("/my-post", [PostController::class,"index"]);
+        Route::get("/my-post", [PostController::class,"index"])->name("dashboard-my-post");;
+        Route::get("/create-post", [PostController::class,"storeView"])->name("dashboard-create-post");;
         Route::post("/create-post", [PostController::class,"store"]);
         Route::put("/update-post", [PostController::class,"update"]);
         Route::delete("/delete-post", [PostController::class,"destroy"]);

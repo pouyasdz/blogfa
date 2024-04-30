@@ -32,11 +32,14 @@
  
 
     <div class="flex mt-auto mb-auto gap-5">
-        <a 
+        <a
+        href="{{route("home")}}" 
         class="bg-blue-200 text-blue-500 cursor-pointer px-3 py-2 rounded-lg shadow-md font-semibold transition-colors delay-150 hover:bg-blue-500 hover:text-blue-200 flex items-center gap-2">سایت <i class="ri-global-line font-normal text-xl"></i></a>
-        <a 
+        <a
+        href="{{route("dashboard")}}" 
         class="bg-purple-200 text-purple-500 cursor-pointer px-3 py-2 rounded-lg shadow-md md font-semibold transition-colors delay-150 hover:bg-purple-500 hover:text-purple-200 flex items-center gap-2">داشبورد <i class="ri-dashboard-2-line font-normal text-xl"></i></a>
-        <a 
+        <a
+        href="{{route("account")}}" 
         class="bg-green-200 text-green-500 cursor-pointer px-3 py-2 rounded-lg shadow-md font-semibold transition-colors delay-150 hover:bg-green-500 hover:text-green-200 flex items-center gap-2">حساب کاربری <i class="ri-account-pin-circle-line font-normal text-xl"></i></a>
     </div>
   </div>

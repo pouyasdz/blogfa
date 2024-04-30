@@ -21,6 +21,10 @@ class PostController extends Controller
         return view("");
     }
 
+    public function storeView(){
+        return view("dashboard.post");
+    }
+
     /**
      * Store a newly created resource in storage.
      */

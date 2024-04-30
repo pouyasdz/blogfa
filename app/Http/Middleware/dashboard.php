@@ -17,7 +17,7 @@ class dashboard
     {
         $user = auth()->user();
         if($user->role === "ADMIN" || $user->role === "WRITER")  return $next($request);
-        return redirect()->route("account");
+        abort(403);
        
     }
 }

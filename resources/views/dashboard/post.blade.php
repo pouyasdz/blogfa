@@ -8,7 +8,7 @@
 
 @section('main')
 <main class="font-vazir" >
-<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8  items-center">
+<div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
 	<div class="sm:max-w-lg w-full p-10  rounded-xl z-10">
 		<div class="text-center">
 			<h2 class="mt-5 text-3xl font-bold text-gray-900">
@@ -28,7 +28,7 @@
                                     <label class="text-sm font-bold text-gray-500 tracking-wide">تصویر</label>
                         <div class="flex items-center justify-center w-full">
                             <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
-                                <div class="h-full w-full text-center flex flex-col items-center justify-center items-center  ">
+                                <div class="h-full w-full text-center flex flex-col items-center justify-center">
                                     <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
                                     <img class="has-mask h-36 object-center" src="{{asset('assets/images/6183507_3129490.svg')}}" alt="Upload">
                                     </div>
