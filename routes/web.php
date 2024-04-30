@@ -32,6 +32,7 @@ Route::post('/wizard', [WizardController::class,'store'])->name('wizard_post');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/account', [AccountController::class, 'index'])->name("account")->middleware("user_login");
+Route::get('/profile/{username}', [ProfileController::class,'show'])->name('profile');
 
 Route::group(['prefix'=>'dashboard', 'middleware'=> ['user_login', 'dashboard_access'] ], function(){
     Route::get('/', [AdminController::class, "index"]);
