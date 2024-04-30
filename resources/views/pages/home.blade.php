@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="text-center text-2xl">
-        <h1 class="text-gray-500">وبلاگ های بروز شده</h1>
+        <h1 class="text-gray-500 py-8">وبلاگ های بروز شده</h1>
     </div>
     <div class="text-right grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-10 md:px-20">
         <div class="bg-white rounded-xl shadow-md overflow-hidden">
