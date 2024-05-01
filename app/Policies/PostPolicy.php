@@ -7,7 +7,7 @@ use App\Models\User;
 
 class PostPolicy
 {
-    public function create(User $user, Post $post):bool
+    public function create(User $user):bool
     {
         return $user->role === "ADMIN" or $user->role === "WRITER";
     }

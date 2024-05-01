@@ -10,6 +10,7 @@ use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Can;
 
 class PostController extends Controller
 {
@@ -30,15 +31,20 @@ class PostController extends Controller
      */
     public function store(StoreRequest $request)
     {
+        if($request->user()->cannot('create', Post::class)) abort(403);
+        $file = $request->file("cover");
+        $fileName = time().$file->getClientOriginalName();
+        $file->move("uploads/images", $fileName);
+        $fileFullPath = "uploads/images/".$file->getClientOriginalName();
         $result = Post::query()->create([
             "author"=>Auth::user()->id,
-            "slug"=>$request->slug,
-            "title"=>$request->title,
-            "cover"=>$request->cover || asset("assets/images/default-image.jpg"),
-            "description"=>$request->description
+            "slug"=>$request["slug"],
+            "title"=>$request["title"],
+            "cover"=> $fileFullPath ,
+            "description"=>$request["description"]
         ]);
         if(!$result) return redirect()->back()->with("error","پست ساخته نشد، خطا در ساخت پست");
-        return redirect()->back(201);
+        return redirect()->back(201)->with("success", "پست با موفقیت ساخته شد");
     }
 
     /**

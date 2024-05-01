@@ -1,7 +1,7 @@
 @extends('dashboard')
 
 @section('title')
-    خانه
+    افزودن پست جدید 
 @endsection
 
 
@@ -15,14 +15,38 @@
 				پست جدید
 			</h2>
 		</div>
-        <form class="mt-8 space-y-3" action="#" method="POST">
+        <form class="mt-8 space-y-3"  method="post" enctype="multipart/form-data" action="{{route("dashboard-article-post")}}" >
+            @csrf
+                    <div class="grid grid-cols-1 space-y-2">
+                        <label class="text-right text-sm font-bold text-gray-500 "> پیوند یکتا </label>
+                            <input 
+                            class="text-base p-2 border 
+                            border-gray-300 rounded-lg 
+                            focus:outline-none 
+                            focus:border-indigo-500" 
+                            type="text" 
+                            placeholder="my-slug"
+                            name="slug"
+                            >
+                            @error("slug")
+                                <span class="text-red-500">{{$message}}</span>
+                            @enderror
+                    </div>
                     <div class="grid grid-cols-1 space-y-2">
                         <label class="text-right text-sm font-bold text-gray-500 ">موضوع</label>
-                            <input class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="text">
+                            <input name="title" class="text-base p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500" type="text">
+                            
+                            @error("title")
+                                <span class="text-red-500">{{$message}}</span>
+                            @enderror
                     </div>
                     <div class="grid grid-cols-1 space-y-2">
                         <label class="text-right text-sm font-bold text-gray-500 ">متن پست  را وارد کنید</label>
-                        <textarea class="text-right rounded-lg  border border-gray-300 leading-normal w-full h-40 py-2 px-3" name="" placeholder='. . . بنوسید' required></textarea>
+                        <textarea class="text-right rounded-lg  border border-gray-300 leading-normal w-full h-40 py-2 px-3" name="description" placeholder='. . . بنوسید' required></textarea>
+                        >
+                            @error("description")
+                                <span class="text-red-500">{{$message}}</span>
+                            @enderror
                     </div>
                     <div class="text-right grid grid-cols-1 space-y-2">
                                     <label class="text-sm font-bold text-gray-500 tracking-wide">تصویر</label>
@@ -34,7 +58,7 @@
                                     </div>
                                     <p class="pointer-none text-gray-500 "><span class="text-sm"></span> فایل ها را در اینجا بکشید و رها کنید<br /><a href="" id="" class="text-blue-600 hover:underline">یا فایلی را از رایانه خود انتخاب کنید</a> </p>
                                 </div>
-                                <input type="file" class="hidden">
+                                <input type="file" class="hidden" accept="image/png, image/gif, image/jpeg" name="cover">
                             </label>
                         </div>
                     </div>

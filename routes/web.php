@@ -50,11 +50,11 @@ Route::group(['prefix'=>'dashboard', 'middleware'=> ['user_login', 'dashboard_ac
     
     // CRUD - post
     Route::group(["prefix"=> "post" ], function(){
-        Route::get("/my-post", [PostController::class,"index"])->name("dashboard-my-post");;
-        Route::get("/create-post", [PostController::class,"storeView"])->name("dashboard-create-post");;
-        Route::post("/create-post", [PostController::class,"store"]);
-        Route::put("/update-post", [PostController::class,"update"]);
-        Route::delete("/delete-post", [PostController::class,"destroy"]);
+        Route::get("/my-post", [PostController::class,"index"])->name("dashboard-my-article");
+        Route::get("/create-post", [PostController::class,"storeView"])->name("dashboard-article-get");
+        Route::post("/create-post", [PostController::class,"store"])->name("dashboard-article-post");
+        Route::put("/update-post", [PostController::class,"update"])->name("dashboard-article-put");
+        Route::delete("/delete-post", [PostController::class,"destroy"])->name("dashboard-article-delete");
     });
     
     // profile
