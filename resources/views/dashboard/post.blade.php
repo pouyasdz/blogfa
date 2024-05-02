@@ -15,6 +15,9 @@
 				پست جدید
 			</h2>
 		</div>
+        @if(Session::has("success"))
+            <span class="text-2xl text-green-500 font-bold">{{ Session::get("success") }}</span>
+        @endif
         <form class="mt-8 space-y-3"  method="post" enctype="multipart/form-data" action="{{route("dashboard-article-post")}}" >
             @csrf
                     <div class="grid grid-cols-1 space-y-2">

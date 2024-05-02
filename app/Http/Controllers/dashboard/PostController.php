@@ -34,13 +34,13 @@ class PostController extends Controller
         if($request->user()->cannot('create', Post::class)) abort(403);
         $file = $request->file("cover");
         $fileName = time().$file->getClientOriginalName();
+        $filePath = "uploads/images/$fileName";
         $file->move("uploads/images", $fileName);
-        $fileFullPath = "uploads/images/".$file->getClientOriginalName();
         $result = Post::query()->create([
             "author"=>Auth::user()->id,
-            "slug"=>$request["slug"],
+            "slug"=>str_replace(" ", "-", strtolower($request["slug"])),
             "title"=>$request["title"],
-            "cover"=> $fileFullPath ,
+            "cover"=> $filePath,
             "description"=>$request["description"]
         ]);
         if(!$result) return redirect()->back()->with("error","پست ساخته نشد، خطا در ساخت پست");
