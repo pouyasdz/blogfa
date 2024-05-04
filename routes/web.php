@@ -11,6 +11,7 @@ use App\Http\Controllers\dashboard\DashboardProfileController;
 use App\Http\Controllers\dashboard\PostController;
 use App\Http\Controllers\dashboard\UserController;
 use App\Http\Controllers\pages\HomeController;
+use App\Http\Controllers\post\CommentController;
 use App\Http\Controllers\profile\ProfileController;
 use App\Http\Controllers\wizard\WizardController;
 use Illuminate\Support\Facades\Route;
@@ -67,6 +68,7 @@ Route::group(['prefix'=>'dashboard', 'middleware'=> ['user_login', 'dashboard_ac
 Route::prefix('blog')->group(function () {
     Route::get('/archive', [BlogController::class, 'index'])->name("archive");
     Route::get('/post/{slug}', [BlogController::class, 'post'])->name('post');
+    Route::post('/create-comment', [CommentController::class, 'store'])->middleware('user_login')->name('create-commnet');
 });
 
 Route::prefix('auth')->group(function () {
