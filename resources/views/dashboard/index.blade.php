@@ -60,12 +60,9 @@
                 mt-3
                 "
                     dir="rtl">
-
-                    <a href="#">لورم اپیسوم متن ساختگی</a>
-                    <a href="#">لورم اپیسوم متن ساختگی</a>
-                    <a href="#">لورم اپیسوم متن ساختگی</a>
-                    <a href="#">لورم اپیسوم متن ساختگی</a>
-
+                        @foreach ($lastArticles as $item)
+                        <a href="blog/post/{{$item["slug"]}}">{{$item["title"]}}</a>    
+                        @endforeach
                 </div>
             </div>
 
@@ -74,61 +71,21 @@
                 <div class="w-full h-500 max-h-500 ">
                     <h3 class="text-right h-2/12 text-2xl font-black text-white">آخرین نظرات</h3>
                     <div class="w-full h-full  overflow-y-auto">
+                            @foreach ($lastComments as $comment)
+                            <div class="w-full h-20
+                            bg-white mt-5 
+                            rounded-md flex items-center gap-5 p-2"
+                                dir="rtl">
+                                <img src="{{strlen($comment->user["profile"]) <=0 ? asset("assets/images/default-image.jpg") : $comment->user["profile"]}}" alt="avatar" class="h-10 w-10 rounded-full">
+                                <div class="flex flex-col">
+                                    <p class="text-xs font-bold text-gray-600">{{$comment->user["first_name"]}} {{$comment->user["last_name"]}}</p>
+                                    <p>{{$comment->content}}</p>
+                                </div>
+                                <span class="hidden md:block mr-auto text-sm text-gray-500 font-black self-end">{{$comment->created_at}}</span>
+                            </div>
+                            @endforeach
+                       
 
-                        <div class="w-full h-20
-                        bg-white mt-5 
-                        rounded-md flex items-center gap-5 p-2"
-                            dir="rtl">
-                            <img src="https://picsum.photos/200/300" alt="avatar" class="h-10 w-10 rounded-full">
-                            <div class="flex flex-col">
-                                <p class="text-xs font-bold text-gray-600">محمد علی ناصری</p>
-                                <p>مقاله بسیار خوبی بود</p>
-                            </div>
-                            <span class="hidden md:block mr-auto text-sm text-gray-500 font-black self-end">1403/01/01</span>
-                        </div>
-
-                        <div class="w-full h-20
-                        bg-white mt-5 
-                        rounded-md flex items-center gap-5 p-2"
-                            dir="rtl">
-                            <img src="https://picsum.photos/200/300" alt="avatar" class="h-10 w-10 rounded-full">
-                            <div class="flex flex-col">
-                                <p class="text-xs font-bold text-gray-600">محمد علی ناصری</p>
-                                <p>مقاله بسیار خوبی بود</p>
-                            </div>
-                        </div>
-
-                        <div class="w-full h-20
-                        bg-white mt-5 
-                        rounded-md flex items-center gap-5 p-2"
-                            dir="rtl">
-                            <img src="https://picsum.photos/200/300" alt="avatar" class="h-10 w-10 rounded-full">
-                            <div class="flex flex-col">
-                                <p class="text-xs font-bold text-gray-600">محمد علی ناصری</p>
-                                <p>مقاله بسیار خوبی بود</p>
-                            </div>
-                        </div>
-
-                        <div class="w-full h-20
-                        bg-white mt-5 
-                        rounded-md flex items-center gap-5 p-2"
-                            dir="rtl">
-                            <img src="https://picsum.photos/200/300" alt="avatar" class="h-10 w-10 rounded-full">
-                            <div class="flex flex-col">
-                                <p class="text-xs font-bold text-gray-600">محمد علی ناصری</p>
-                                <p>مقاله بسیار خوبی بود</p>
-                            </div>
-                        </div>
-                        <div class="w-full h-20
-                        bg-white mt-5 
-                        rounded-md flex items-center gap-5 p-2"
-                            dir="rtl">
-                            <img src="https://picsum.photos/200/300" alt="avatar" class="h-10 w-10 rounded-full">
-                            <div class="flex flex-col">
-                                <p class="text-xs font-bold text-gray-600">محمد علی ناصری</p>
-                                <p>مقاله بسیار خوبی بود</p>
-                            </div>
-                        </div>
 
                     </div>
                 </div>

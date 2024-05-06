@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -12,7 +15,19 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view("dashboard.index");
+        $lastArticles = Post::orderBy("created_at", "desc")->where("author", "=", Auth::user()->id)->paginate(10);
+        $loggedInUserId = Auth::user()->id; // Assuming you have a method to get the logged-in user ID
+
+        $comments = Comment::whereHas('post', function ($query) use ($loggedInUserId) {
+            $query->where('author', $loggedInUserId);
+        })
+            ->orderBy('created_at', 'desc')
+            ->limit(10)
+            ->get();
+        return view("dashboard.index", [
+            "lastArticles"=> $lastArticles,
+            "lastComments" => $comments
+        ]);
     }
 
     /**
