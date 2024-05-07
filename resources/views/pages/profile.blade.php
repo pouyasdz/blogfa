@@ -44,15 +44,16 @@
                 <div class="text-center text-slate-400 m-8 text-2xl not-italic font-bold pb-8">
                     <h2>وبلاگ های اخیر</h2>
                     <div class="text-right grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-10 md:px-20">
+                        @foreach ($posts as $post)
                         <div class="bg-white rounded-xl shadow-md overflow-hidden">
                             <div class="relative">
-                                <img class="w-full h-48 object-cover" src="{{ asset('assets/images/img.jfif') }}">
+                                <img class="w-full h-48 object-contain" src="{{ asset($post->cover) }}">
                                 <div class="flex mt-3">
-                                    <img src="{{ asset('assets/images/imgpost.jpg') }}"
+                                    <img src="{{ asset(strlen($post["user"]["profile"]) <= 0 ? "assets/images/default-image.jpg" :   $post["user"]["profile"])  }}"
                                         class="h-12 w-12 rounded-full mr-2 object-cover" />
                                     <div>
-                                        <p class="font-vazir text-black text-sm">رضا رضایی</p>
-                                        <p class="font-vazir text-black text-xs"> 1401/02/05</p>
+                                        <p class="font-vazir text-black text-sm">{{$post->user["first_name"]}} {{$post->user["last_name"]}}</p>
+                                        <p class="font-vazir text-black text-xs">{{$post->created_at}}</p>
                                     </div>
                                 </div>
                                 <div
@@ -61,171 +62,14 @@
                                 </div>
                             </div>
                             <div class="p-4">
-                                <div class="text-lg font-medium text-gray-800 mb-2">لورم ایپسوم</div>
-                                <p class="text-gray-500 text-sm">اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار
-                                    دارید به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند. لورم ایپسوم یا
-                                    طرح‌نما (به انگلیسی: Lorem ipsum) متنی ساختگی و بدون معنی است که برای امتحان فونت و یا
-                                    پر کردن فضا در یک طراحی گرافیکی و یا صنعت چاپ استفاده میشود</p>
-                                <a href="">...نمایش بیشتر</a>
+                                <div class="text-lg font-medium text-gray-800 mb-2">{{$post->title}}</div>
+                                <p class="text-gray-500 text-sm">{{$post->description}}</p>
+                                <a href="/blog/post/{{$post->slug}}">...نمایش بیشتر</a>
                             </div>
                         </div>
+                        @endforeach
+                        
 
-
-                        <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                            <div class="relative">
-                                <img class="w-full h-48 object-cover" src="{{ asset('assets/images/img.jfif') }}">
-                                <div class="flex mt-3">
-                                    <img src="{{ asset('assets/images/imgpost.jpg') }}"
-                                        class="h-12 w-12 rounded-full mr-2 object-cover" />
-                                    <div>
-                                        <p class="font-vazir text-black text-sm">رضا رضایی</p>
-                                        <p class="font-vazir text-black text-xs"> 1401/02/05</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="absolute bottom-0 right-0 bg-gray-800 text-white px-2 py-1 m-2 rounded-md text-xs">
-                                    دیروز
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="text-lg font-medium text-gray-800 mb-2">لورم ایپسوم</div>
-                                <p class="text-gray-500 text-sm">اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار
-                                    دارید به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند. لورم ایپسوم یا
-                                    طرح‌نما (به انگلیسی: Lorem ipsum) متنی ساختگی و بدون معنی است که برای امتحان فونت و یا
-                                    پر کردن فضا در یک طراحی گرافیکی و یا صنعت چاپ استفاده میشود</p>
-                                <a href="">...نمایش بیشتر</a>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                            <div class="relative">
-                                <img class="w-full h-48 object-cover" src="{{ asset('assets/images/img.jfif') }}">
-                                <div class="flex mt-3">
-                                    <img src="{{ asset('assets/images/imgpost.jpg') }}"
-                                        class="h-12 w-12 rounded-full mr-2 object-cover" />
-                                    <div>
-                                        <p class="font-vazir text-black text-sm">رضا رضایی</p>
-                                        <p class="font-vazir text-black text-xs"> 1401/02/05</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="absolute bottom-0 right-0 bg-gray-800 text-white px-2 py-1 m-2 rounded-md text-xs">
-                                    دیروز
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="text-lg font-medium text-gray-800 mb-2">لورم ایپسوم</div>
-                                <p class="text-gray-500 text-sm">اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار
-                                    دارید به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند. لورم ایپسوم یا
-                                    طرح‌نما (به انگلیسی: Lorem ipsum) متنی ساختگی و بدون معنی است که برای امتحان فونت و یا
-                                    پر کردن فضا در یک طراحی گرافیکی و یا صنعت چاپ استفاده میشود</p>
-                                <a href="">...نمایش بیشتر</a>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                            <div class="relative">
-                                <img class="w-full h-48 object-cover" src="{{ asset('assets/images/img.jfif') }}">
-                                <div class="flex mt-3">
-                                    <img src="{{ asset('assets/images/imgpost.jpg') }}"
-                                        class="h-12 w-12 rounded-full mr-2 object-cover" />
-                                    <div>
-                                        <p class="font-vazir text-black text-sm">رضا رضایی</p>
-                                        <p class="font-vazir text-black text-xs"> 1401/02/05</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="absolute bottom-0 right-0 bg-gray-800 text-white px-2 py-1 m-2 rounded-md text-xs">
-                                    دیروز
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="text-lg font-medium text-gray-800 mb-2">لورم ایپسوم</div>
-                                <p class="text-gray-500 text-sm">اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار
-                                    دارید به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند. لورم ایپسوم یا
-                                    طرح‌نما (به انگلیسی: Lorem ipsum) متنی ساختگی و بدون معنی است که برای امتحان فونت و یا
-                                    پر کردن فضا در یک طراحی گرافیکی و یا صنعت چاپ استفاده میشود</p>
-                                <a href="">...نمایش بیشتر</a>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                            <div class="relative">
-                                <img class="w-full h-48 object-cover" src="{{ asset('assets/images/img.jfif') }}">
-                                <div class="flex mt-3">
-                                    <img src="{{ asset('assets/images/imgpost.jpg') }}"
-                                        class="h-12 w-12 rounded-full mr-2 object-cover" />
-                                    <div>
-                                        <p class="font-vazir text-black text-sm">رضا رضایی</p>
-                                        <p class="font-vazir text-black text-xs"> 1401/02/05</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="absolute bottom-0 right-0 bg-gray-800 text-white px-2 py-1 m-2 rounded-md text-xs">
-                                    دیروز
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="text-lg font-medium text-gray-800 mb-2">لورم ایپسوم</div>
-                                <p class="text-gray-500 text-sm">اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار
-                                    دارید به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند. لورم ایپسوم یا
-                                    طرح‌نما (به انگلیسی: Lorem ipsum) متنی ساختگی و بدون معنی است که برای امتحان فونت و یا
-                                    پر کردن فضا در یک طراحی گرافیکی و یا صنعت چاپ استفاده میشود</p>
-                                <a href="">...نمایش بیشتر</a>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                            <div class="relative">
-                                <img class="w-full h-48 object-cover" src="{{ asset('assets/images/img.jfif') }}">
-                                <div class="flex mt-3">
-                                    <img src="{{ asset('assets/images/imgpost.jpg') }}"
-                                        class="h-12 w-12 rounded-full mr-2 object-cover" />
-                                    <div>
-                                        <p class="font-vazir text-black text-sm">رضا رضایی</p>
-                                        <p class="font-vazir text-black text-xs"> 1401/02/05</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="absolute bottom-0 right-0 bg-gray-800 text-white px-2 py-1 m-2 rounded-md text-xs">
-                                    دیروز
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="text-lg font-medium text-gray-800 mb-2">لورم ایپسوم</div>
-                                <p class="text-gray-500 text-sm">اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار
-                                    دارید به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند. لورم ایپسوم یا
-                                    طرح‌نما (به انگلیسی: Lorem ipsum) متنی ساختگی و بدون معنی است که برای امتحان فونت و یا
-                                    پر کردن فضا در یک طراحی گرافیکی و یا صنعت چاپ استفاده میشود</p>
-                                <a href="">...نمایش بیشتر</a>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-xl shadow-md overflow-hidden">
-                            <div class="relative">
-                                <img class="w-full h-48 object-cover" src="{{ asset('assets/images/img.jfif') }}">
-                                <div class="flex mt-3">
-                                    <img src="{{ asset('assets/images/imgpost.jpg') }}"
-                                        class="h-12 w-12 rounded-full mr-2 object-cover" />
-                                    <div>
-                                        <p class="font-vazir text-black text-sm">رضا رضایی</p>
-                                        <p class="font-vazir text-black text-xs"> 1401/02/05</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="absolute bottom-0 right-0 bg-gray-800 text-white px-2 py-1 m-2 rounded-md text-xs">
-                                    دیروز
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="text-lg font-medium text-gray-800 mb-2">لورم ایپسوم</div>
-                                <p class="text-gray-500 text-sm">اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار
-                                    دارید به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند. لورم ایپسوم یا
-                                    طرح‌نما (به انگلیسی: Lorem ipsum) متنی ساختگی و بدون معنی است که برای امتحان فونت و یا
-                                    پر کردن فضا در یک طراحی گرافیکی و یا صنعت چاپ استفاده میشود</p>
-                                <a href="">...نمایش بیشتر</a>
-                            </div>
-                        </div>
                     </div>
         @endif
     </main>

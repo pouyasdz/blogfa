@@ -28,7 +28,7 @@ class ProfileController extends Controller
             "first_name"=> $user->first_name,
             "last_name"=> $user->last_name,
             "about"=> $user->about,
-            "profile" => $user->profile,
+            "profile" => strlen($user->profile) <= 0 ? asset("assets/images/default-image.jpg") : $user->profile,
         ];
         
         return view("pages.profile", [
