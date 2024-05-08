@@ -19,9 +19,22 @@
                   <a class="block md:text-inherit mr-4" href="#">تماس با ما </a>
                   <a class="block md:text-black mr-4" href="#">خانه </a>
                 </div>
-                <div class="flex text-sm" v-else>
-                    <a class="p-2 ml-2 bg-white text-teal-500 font-semibold leading-none border border-gray-100 rounded hover:border-transparent hover:bg-gray-100" href="#">ورود</a>
-                  <a class="p-2 ml-2 bg-blue-500 text-gray-100 font-semibold leading-none border border-blue-600 rounded hover:border-transparent hover:bg-blue-600" href="#">ثبت نام</a>
+                <div class="flex text-sm">
+                  @if(!auth()->guard()->check())
+                    <a class="p-2 ml-2 bg-white text-teal-500 font-semibold leading-none border border-gray-100 rounded hover:border-transparent hover:bg-gray-100" href="{{route("login")}}">ورود</a>
+                  <a class="p-2 ml-2 bg-blue-500 text-gray-100 font-semibold leading-none border border-blue-600 rounded hover:border-transparent hover:bg-blue-600" href="{{route("register")}}">ثبت نام</a>
+                  @endif
+                  @if(auth()->guard()->check())
+                  <div class="flex gap-2 items-center">
+                    <a class="text-xl font-black text-blue-700 font-vazir" href={{route("account")}}>{{auth()->user()->first_name}} {{auth()->user()->last_name}}</a>
+                    <img 
+                    src="{{asset(strlen(auth()->user()->profile) 
+                    <= 0 ? "assets/images/default-image.jpg" 
+                    : auth()->user()->profile)}}" alt="profile"
+                    class="w-10 h-10 rounded-full"
+                    >
+                  </div>
+                  @endif
                 </div>
               </div>
           </nav>

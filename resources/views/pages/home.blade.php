@@ -18,11 +18,11 @@
                 </p>
                 <p class="text-lg font-semibold text-gray-700">خود را در اینترنت منتشر کنید</p>
                 <div class="flex gap-5 mt-5">
-                    <button
+                    <a  href="{{route("dashboard-article-post")}}"
                         class="px-5 py-2 bg-blue-500 transition-colors delay-150 hover:bg-blue-600 text-white rounded-lg shadow-lg shadow-blue-400"><i
-                            class="ri-add-line"></i> ثبت وبلاگ جدید </button>
-                    <button
-                        class="px-5 py-2 border-2 border-blue-200 rounded-lg transition-colors delay-150 hover:bg-blue-600 hover:border-blue-600 hover:text-white">ورود</button>
+                            class="ri-add-line"></i> ثبت وبلاگ جدید </a>
+                    <a href="{{route("login")}}"
+                        class="px-5 py-2 border-2 border-blue-200 rounded-lg transition-colors delay-150 hover:bg-blue-600 hover:border-blue-600 hover:text-white">ورود</a>
                 </div>
             </div>
         </div>
@@ -40,19 +40,16 @@
                             <img src="{{ strlen($post->user['profile']) <= 0 ? asset('assets/images/default-image.jpg') : asset($post->user['profile']) }}"
                                 class="h-12 w-12 rounded-full mr-2 object-cover" />
                             <div>
-                                <p class="font-vazir text-black text-sm">رضا رضایی</p>
-                                <p class="font-vazir text-black text-xs"> 1401/02/05</p>
+                                <p class="font-vazir text-black text-sm">{{$post->user["first_name"]}} {{$post->user["last_name"]}}</p>
+                                <p class="font-vazir text-black text-xs">{{$post->created_at}}</p>
                             </div>
                         </div>
                         <div class="absolute bottom-0 right-0 bg-gray-800 text-white px-2 py-1 m-2 rounded-md text-xs">دیروز
                         </div>
                     </div>
                     <div class="p-4">
-                        <div class="text-lg font-medium text-gray-800 mb-2">لورم ایپسوم</div>
-                        <p class="text-gray-500 text-sm">اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار دارید به متن
-                            های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند. لورم ایپسوم یا طرح‌نما (به انگلیسی: Lorem
-                            ipsum) متنی ساختگی و بدون معنی است که برای امتحان فونت و یا پر کردن فضا در یک طراحی گرافیکی و یا
-                            صنعت چاپ استفاده میشود</p>
+                        <div class="text-lg font-medium text-gray-800 mb-2">{{$post->title}}</div>
+                        <p class="text-gray-500 text-sm">{{$post->description}}</p>
                         <a href="/blog/post/{{$post->slug}}">...نمایش بیشتر</a>
                     </div>
                 </div>
@@ -62,7 +59,7 @@
 
         </div>
         <div class="text-center text-lg">
-            <a href="" class="text-gray-500">+ مطالعه بیشتر</a>
+            <a href="{{route("archive")}}" class="text-gray-500">+ مطالعه بیشتر</a>
         </div>
     </main>
 @endsection
