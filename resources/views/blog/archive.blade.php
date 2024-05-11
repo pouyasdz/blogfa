@@ -37,8 +37,6 @@
         @endforeach
     
     </div>
-    <div class="text-center text-lg">
-        <a href="" class="text-gray-500">+ مطالعه بیشتر</a>
-    </div>
+    
     </main>
 @endsection
