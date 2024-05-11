@@ -30,7 +30,7 @@
             </div>
             <div class="p-4">
                 <div class="text-lg font-medium text-gray-800 mb-2">{{$post->title}}</div>
-                <p class="text-gray-500 text-sm">{{$post->description}}</p>
+                <p class="text-gray-500 text-sm text-ellipsis whitespace-nowrap overflow-hidden">{{$post->description}}</p>
                 <a href="/blog/post/{{$post->slug}}">...نمایش بیشتر</a>   
             </div>
         </div>

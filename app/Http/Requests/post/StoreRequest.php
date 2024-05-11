@@ -11,7 +11,7 @@ class StoreRequest extends FormRequest
         return [
             "slug"=>["required", "min:3", "max:30", "unique:posts"],
             "title"=>["required", "min:3", "max:30"],
-            "description"=>["required", "max:1000"],
+            "description"=>["required", "max:100000"],
             "cover"=>["required", "max:5024", "file"],
         ];
     }
@@ -26,7 +26,7 @@ class StoreRequest extends FormRequest
             "title.min"=>"حداقل 3 کاراکتر",
             "title.max"=>"حداکثر 30 کاراکتر",
             "title.required"=>"مورد نیاز",
-            "description.max"=>"حداکثر 1000 کاراکتر",
+            "description.max"=>"حداکثر 100000 کاراکتر",
             "description.required"=>"مورد نیاز است",
             "cover.max"=>"سایز تصویر باید کمتر از 5 مگابایت باشد",
             "cover.required"=>"مورد نیاز است",
