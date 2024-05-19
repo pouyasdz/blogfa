@@ -17,7 +17,7 @@
                 <div class="font-vazir md:flex hidden">
                   <a class="block md:text-inherit mr-4" href="#">راهنما</a>
                   <a class="block md:text-inherit mr-4" href="#">تماس با ما </a>
-                  <a class="block md:text-black mr-4" href="#">خانه </a>
+                  <a class="block md:text-black mr-4" href="{{route("home")}}">خانه </a>
                 </div>
                 <div class="flex text-sm">
                   @if(!auth()->guard()->check())

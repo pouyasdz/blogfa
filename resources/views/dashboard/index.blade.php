@@ -9,22 +9,26 @@
         [
             'icon' => 'ri-eye-2-line',
             'title' => 'بازدید کل',
-            'content' => '1000',
+            'content' => $postsView,
+            'private' => false,
         ],
         [
             'icon' => 'ri-chat-1-line',
             'title' => 'تعداد نظرات',
-            'content' => '300',
+            'content' => $totalComments,
+            'private' => false,
         ],
         [
             'icon' => 'ri-article-line',
             'title' => 'تعداد مقالات',
-            'content' => '20',
+            'content' => $totalPosts,
+            'private' => false,
         ],
         [
             'icon' => 'ri-group-line',
             'title' => 'کل کاربر ها',
-            'content' => '100000',
+            'content' => $totalUsers,
+            'private' => true,
         ],
     ];
 @endphp
@@ -41,14 +45,28 @@
             class="w-full h-300 grid mt-14
         grid-cols-2 grid-rows-2 md:grid-cols-3 lg:grid-cols-4 lg:grid-rows-1 lg:h-200 gap-3">
             @foreach ($totalStatus as $item)
-                <div class="w-full h-full bg-slate-800 
+                @if (!$item['private'])
+                    <div class="w-full h-full bg-slate-800 
             rounded-lg p-3 text-white flex flex-col">
-                    <div class="flex items-center justify-between">
-                        <i class="{{ $item['icon'] }} text-2xl md:text-4xl text-green-200"></i>
-                        <p class="font-bold md:text-2xl">{{ $item['title'] }}</p>
+                        <div class="flex items-center justify-between">
+                            <i class="{{ $item['icon'] }} text-2xl md:text-4xl text-green-200"></i>
+                            <p class="font-bold md:text-2xl">{{ $item['title'] }}</p>
+                        </div>
+                        <h3 class="text-center text-4xl mt-auto persian-num">{{ $item['content'] }}</h3>
                     </div>
-                    <h3 class="text-center text-4xl mt-auto persian-num">{{ $item['content'] }}</h3>
-                </div>
+                @endif
+                @if ($item['private'])
+                    @can('viewAny', auth()->user())
+                        <div class="w-full h-full bg-slate-800 
+                rounded-lg p-3 text-white flex flex-col">
+                            <div class="flex items-center justify-between">
+                                <i class="{{ $item['icon'] }} text-2xl md:text-4xl text-green-200"></i>
+                                <p class="font-bold md:text-2xl">{{ $item['title'] }}</p>
+                            </div>
+                            <h3 class="text-center text-4xl mt-auto persian-num">{{ $item['content'] }}</h3>
+                        </div>
+                    @endcan
+                @endif
             @endforeach
         </div>
 
@@ -60,9 +78,9 @@
                 mt-3
                 "
                     dir="rtl">
-                        @foreach ($lastArticles as $item)
-                        <a href="blog/post/{{$item["slug"]}}">{{$item["title"]}}</a>    
-                        @endforeach
+                    @foreach ($lastArticles as $item)
+                        <a href="blog/post/{{ $item['slug'] }}">{{ $item['title'] }}</a>
+                    @endforeach
                 </div>
             </div>
 
@@ -71,42 +89,25 @@
                 <div class="w-full h-500 max-h-500 ">
                     <h3 class="text-right h-2/12 text-2xl font-black text-white">آخرین نظرات</h3>
                     <div class="w-full h-full  overflow-y-auto">
-                            @foreach ($lastComments as $comment)
+                        @foreach ($lastComments as $comment)
                             <div class="w-full h-20
                             bg-white mt-5 
                             rounded-md flex items-center gap-5 p-2"
                                 dir="rtl">
-                                <img src="{{strlen($comment->user["profile"]) <=0 ? asset("assets/images/default-image.jpg") : $comment->user["profile"]}}" alt="avatar" class="h-10 w-10 rounded-full">
+                                <img src="{{ strlen($comment->user['profile']) <= 0 ? asset('assets/images/default-image.jpg') : $comment->user['profile'] }}"
+                                    alt="avatar" class="h-10 w-10 rounded-full">
                                 <div class="flex flex-col">
-                                    <p class="text-xs font-bold text-gray-600">{{$comment->user["first_name"]}} {{$comment->user["last_name"]}}</p>
-                                    <p>{{$comment->content}}</p>
+                                    <p class="text-xs font-bold text-gray-600">{{ $comment->user['first_name'] }}
+                                        {{ $comment->user['last_name'] }}</p>
+                                    <p>{{ $comment->content }}</p>
                                 </div>
-                                <span class="hidden md:block mr-auto text-sm text-gray-500 font-black self-end">{{$comment->created_at}}</span>
+                                <span
+                                    class="hidden md:block mr-auto text-sm text-gray-500 font-black self-end">{{ $comment->created_at }}</span>
                             </div>
-                            @endforeach
-                       
+                        @endforeach
 
 
-                    </div>
-                </div>
 
-                <div class="w-full h-500 max-h-500 ">
-                    <h3 class="text-right text-2xl font-black text-white">محبوب ترین مقالات</h3>
-                    <div 
-                    class="w-full h-full 
-                    flex flex-col items-end 
-                    bg-white p-2 mt-5 rounded-lg
-                    justify-evenly">
-                        <a href="#">لورم اپیسوم متن ساختگی</a>
-                        <a href="#">لورم اپیسوم متن ساختگی</a>
-                        <a href="#">لورم اپیسوم متن ساختگی</a>
-                        <a href="#">لورم اپیسوم متن ساختگی</a>
-                        <a href="#">لورم اپیسوم متن ساختگی</a>
-                        <a href="#">لورم اپیسوم متن ساختگی</a>
-                        <a href="#">لورم اپیسوم متن ساختگی</a>
-                        <a href="#">لورم اپیسوم متن ساختگی</a>
-                        <a href="#">لورم اپیسوم متن ساختگی</a>
-                        <a href="#">لورم اپیسوم متن ساختگی</a>
                     </div>
                 </div>
             </div>

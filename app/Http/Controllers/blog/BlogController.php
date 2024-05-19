@@ -16,6 +16,7 @@ class BlogController extends Controller
     public function post($slug){
         $post = Post::query()->where("slug", $slug)->first();
         if(!$post) abort(404);
+        $post->view = $post->view + 1;
         $author = User::query()->where("id", "=", $post["author"])->first();
         $author = [
             "username"=> $author["username"],
@@ -25,6 +26,7 @@ class BlogController extends Controller
         ];
         $comments = Comment::query()->where("to","=", $post["id"])->get();
         $response = ["post"=> $post, "author"=> $author, "comments"=>$comments];
+        $post->save();
         return view("blog.post", $response);
     }
 }

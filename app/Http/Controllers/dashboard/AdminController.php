@@ -5,6 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,8 +16,16 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $lastArticles = Post::orderBy("created_at", "desc")->where("author", "=", Auth::user()->id)->paginate(10);
         $loggedInUserId = Auth::user()->id; // Assuming you have a method to get the logged-in user ID
+        $lastArticles = Post::orderBy("created_at", "desc")->where("author", "=", $loggedInUserId)->paginate(10);
+        $totalUsers = User::get()->count();
+        $totalPosts = Post::where("author", "=", $loggedInUserId)->get()->count();
+        $sumViewPosts = Post::where("author", "=", $loggedInUserId)->sum("view");
+        $totalComments = Comment::whereHas('post', function ($query) use ($loggedInUserId) {
+            $query->where('author', $loggedInUserId);
+        })
+            ->get()
+            ->count();
 
         $comments = Comment::whereHas('post', function ($query) use ($loggedInUserId) {
             $query->where('author', $loggedInUserId);
@@ -24,9 +33,15 @@ class AdminController extends Controller
             ->orderBy('created_at', 'desc')
             ->limit(10)
             ->get();
+
         return view("dashboard.index", [
             "lastArticles"=> $lastArticles,
-            "lastComments" => $comments
+            "lastComments" => $comments,
+            "totalUsers"=>$totalUsers,
+            "totalPosts"=>$totalPosts,
+            "totalComments"=>$totalComments,
+            "postsView"=>$sumViewPosts
+
         ]);
     }
 
