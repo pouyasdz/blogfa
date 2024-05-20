@@ -23,10 +23,14 @@
                                     alt="">
 
                                 <div class="flex flex-col space-y-5 sm:ml-8 ml-8">
-                                    <button type="button"
+                                <label for="img" class="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-[#202142] rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200">
+                                            تغییر پروفایل
+                                        </label>
+                                    <input type="file" id="img" class="hidden" accept="image/png, image/gif, image/jpeg"
                                         class="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-[#202142] rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 ">
-                                        تغییر پروفایل
-                                    </button>
+                                  
+                                        <input type="file" class="hidden" accept="image/png, image/gif, image/jpeg">
+                                    
                                 </div>
 
                             </div>
