@@ -54,12 +54,14 @@ Route::group(['prefix'=>'dashboard', 'middleware'=> ['user_login', 'dashboard_ac
         Route::get("/my-post", [PostController::class,"index"])->name("dashboard-my-article");
         Route::get("/create-post", [PostController::class,"storeView"])->name("dashboard-article-get");
         Route::post("/create-post", [PostController::class,"store"])->name("dashboard-article-post");
+        Route::get("/update-post/{id}", [PostController::class,"updateView"])->name("dashboard-update-view");
         Route::put("/update-post", [PostController::class,"update"])->name("dashboard-article-put");
         Route::delete("/delete-post", [PostController::class,"destroy"])->name("dashboard-article-delete");
     });
     
     // profile
-    Route::get("/profile", [DashboardProfileController::class, "index"]);
+    Route::get("/my-profile", [DashboardProfileController::class, "index"]);
+    Route::post("/update-profile", [DashboardProfileController::class, "update"])->name("update-profile");
     
     // logout
     Route::get("/logout", [DashboardProfileController::class, "destroy"]);

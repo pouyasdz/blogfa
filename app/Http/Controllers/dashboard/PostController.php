@@ -19,7 +19,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view("");
+        $userID = auth()->user()->id;
+        $posts = Post::query()->where("author", "=", $userID)
+        ->orderBy("created_at")
+        ->get();
+        return view("dashboard.myPost", compact("posts"));    
     }
 
     public function storeView(){
@@ -56,6 +60,12 @@ class PostController extends Controller
         if(!$post) return redirect()->back(404);
         $comments = Comment::query()->where("to",$post->id);
         return view()->with("post", $post)->with("comments", $comments);
+    }
+
+
+    public function updateView($id){
+        $post = Post::where('id', "=", $id)->firstOrFail();
+        return view("dashboard.updatePost", compact("post"));
     }
 
     /**

@@ -24,7 +24,7 @@ const sidebarData = [
         title:"پست های من",
         icon:"ri-file-list-3-line",
         iconFill:"ri-file-list-3-fill",
-        link:"/dashboard/my-posts",
+        link:"/dashboard/post/my-post",
     },
     {
         title:"پروفایل",
