@@ -10,7 +10,7 @@ class StoreRequest extends FormRequest
     {
         return [
             "slug"=>["required", "min:3", "max:30", "unique:posts"],
-            "title"=>["required", "min:3", "max:30"],
+            "title"=>["required", "min:3", "max:200"],
             "description"=>["required", "max:100000"],
             "cover"=>["required", "max:5024", "file"],
         ];
@@ -20,7 +20,7 @@ class StoreRequest extends FormRequest
     {
         return [
             "slug.min"=> "حداقل 3 کاراکتر",
-            "slug.max"=>"حداکثر 30 کاراکتر",
+            "slug.max"=>"حداکثر 200 کاراکتر",
             "slug.unique"=>"پیوند یکتا قبلا استقاده شده",
             "slug.required"=>"مورد نیاز",
             "title.min"=>"حداقل 3 کاراکتر",

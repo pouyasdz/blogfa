@@ -86,5 +86,6 @@ class PostController extends Controller
         $result = Post::query()->findOrFail($id)->delete();
         if($result) Comment::query()->where("to",$id)->delete();
         if(!$result) return redirect()->back()->with("error","پست حذف نشد");
+        return redirect()->back();
     }
 }
