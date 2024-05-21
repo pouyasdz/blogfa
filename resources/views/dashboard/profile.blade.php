@@ -9,7 +9,7 @@
 @section('main')
     <main class="font-vazir">
         <div class="items-center bg-white text-right w-full flex flex-col gap-5 px-3 md:px-16 lg:px-28 md:flex-row">
-            <form class="w-full min-h-screen py-1 md:w-2/3 lg:w-3/4" method="POST" action="{{ route('update-profile') }}">
+            <form class="w-full min-h-screen flex justify-center items-center py-1 md:w-2/3 lg:w-3/4" method="POST" enctype="multipart/form-data" action="{{ route('update-profile') }}">
                 @csrf
                 <div class="p-2 md:p-4">
                     <div class="w-full px-6 pb-8 mt-8 sm:max-w-xl sm:rounded-lg">
@@ -26,10 +26,8 @@
                                 <label for="img" class="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-[#202142] rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200">
                                             تغییر پروفایل
                                         </label>
-                                    <input type="file" id="img" class="hidden" accept="image/png, image/gif, image/jpeg"
-                                        class="py-3.5 px-7 text-base font-medium text-indigo-100 focus:outline-none bg-[#202142] rounded-lg border border-indigo-200 hover:bg-indigo-900 focus:z-10 focus:ring-4 focus:ring-indigo-200 ">
+                                    <input name="profile" type="file" id="img" class="hidden" accept="image/png, image/gif, image/jpeg">
                                   
-                                        <input type="file" class="hidden" accept="image/png, image/gif, image/jpeg">
                                     
                                 </div>
 
@@ -82,7 +80,7 @@
                                         من</label>
                                     <textarea id="message" rows="4"
                                         class="block p-2.5 w-full text-sm text-indigo-900 bg-indigo-50 rounded-lg border border-indigo-300 focus:ring-indigo-500 focus:border-indigo-500 "
-                                        placeholder="Write your bio here..." name="about" value="{{ $data['about'] }}"></textarea>
+                                        placeholder="Write your bio here..." name="about" dir="rtl">{{ $data['about'] }}</textarea>
                                     @error('about')
                                         <span class="text-red-500">{{ $message }}</span>
                                     @enderror

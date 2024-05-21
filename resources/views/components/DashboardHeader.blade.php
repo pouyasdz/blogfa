@@ -11,6 +11,8 @@
             placeholder="اینجا جستجو کنید ...">
 
         </div>
-        <img src="https://picsum.photos/200/300" alt="avatar" class="w-10 h-full rounded-full">
+        <a href="{{route("my-profile")}}">
+            <img src="{{asset(auth()->user()->profile)}}" alt="avatar" class="w-10 h-full rounded-full">
+        </a>
     </nav>
 </header>

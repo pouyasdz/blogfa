@@ -39,31 +39,7 @@
               </div>
           </nav>
         </header>
-        <div class="bottomNav fixed bottom-0 w-full">
-          <nav class="md:hidden rounded-3xl bottom-0 w-full bg-blue-500 text-xs">
-            <ul class="flex justify-around items-center text-white text-center opacity-75 text-lg font-bold">
-              <li class="p-4 hover:bg-gray-500">
-                <a href="#">
-                  <span></span>
-                  <i class="ri-question-line"></i>
-                 </a>
-              </li>
-              <li class="p-4 hover:bg-gray-500">
-                <a href="#">
-                  <span></span>
-                  <i class="ri-phone-fill size-12"></i>
-                </a>
-              </li>
-              
-              <li class="p-4 hover:bg-gray-500">
-                <a href="">
-                  <span></span>
-                  <i class="ri-home-4-fill"></i>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+       
       </div
 </body>
 </html>

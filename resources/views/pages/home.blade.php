@@ -21,8 +21,10 @@
                     <a  href="{{route("dashboard-article-post")}}"
                         class="px-5 py-2 bg-blue-500 transition-colors delay-150 hover:bg-blue-600 text-white rounded-lg shadow-lg shadow-blue-400"><i
                             class="ri-add-line"></i> ثبت وبلاگ جدید </a>
+                    @if(!auth()->guard()->check())
                     <a href="{{route("login")}}"
                         class="px-5 py-2 border-2 border-blue-200 rounded-lg transition-colors delay-150 hover:bg-blue-600 hover:border-blue-600 hover:text-white">ورود</a>
+                    @endif
                 </div>
             </div>
         </div>

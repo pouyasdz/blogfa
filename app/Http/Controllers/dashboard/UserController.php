@@ -47,10 +47,24 @@ class UserController extends Controller
      * Update the specified resource in storage.
      */
     public function update(UpdateRequest $request, string $id)
-    {
+    {   
         $user = User::query()->where("id", $id)->firstOrFail();
-        if($request->email) $user->email = $request->email;
-        if($request->password) $user->password = bcrypt($request->password);
+        $this->authorize('update', $user);
+        $filePath = $user->profile;
+        if($request->file("profile"))
+        {
+            $file = $request->file("profile");
+            $fileName = time().$file->getClientOriginalName();
+            $filePath = "uploads/images/$fileName";
+            $file->move("uploads/images", $fileName);
+        }
+        $user->update([
+            "first_name"=>$request["first_name"],
+            "last_name"=>$request["last_name"],
+            "email"=>$request["email"],
+            "about"=>$request["about"],
+            "profile"=>$filePath
+        ]);
         $user->save();
 
         Session::flash("message","تغیرات با موفقیت اعمال شد");

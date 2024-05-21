@@ -15,12 +15,13 @@ class UpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        $u = User::find(auth()->user()->id)->firstOrFail();
+        $is = auth()->user()->id;
         return [
             "first_name"=> ["nullable", "min:3", "max:30"],
             "last_name" => ["nullable", "min:4", "max:100"],
-            "email"=>["required","email", "unique:users,email,".$u->id.",id"],
-            "about"=>["nullable", "max:400"]
+            "email"=>["required","email", "unique:users,email, ".$is],
+            "about"=>["nullable", "max:400"],
+            "profile"=>["nullable", "max:5024", "file"],
         ];
     }
 

@@ -18,7 +18,7 @@
         @if(Session::has("success"))
             <span class="text-2xl text-green-500 font-bold">{{ Session::get("success") }}</span>
         @endif
-        <form class="mt-8 space-y-3"  method="post" enctype="multipart/form-data" action="{{route("dashboard-article-post")}}" >
+        <form class="mt-8 space-y-3"  method="POST" enctype="multipart/form-data" action="{{route("dashboard-article-put", $post["id"])}}" >
             @csrf
                     <div class="grid grid-cols-1 space-y-2">
                         <label class="text-right text-sm font-bold text-gray-500 "> پیوند یکتا </label>

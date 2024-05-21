@@ -41,7 +41,7 @@
         <div class="flex flex-col gap-2 bg-blue-50 p-5 rounded-3xl mt-5 relative">
           <span class="absolute left-0 ml-5 text-sm text-gray-500">{{$item["created_at"]}}</span>
           <div class="flex w-full items-center flex-row-reverse gap-3">
-            <img class="w-14 h-14 rounded-full " src="{{strlen($item->user["profile"]) <= 0 ? asset("assets/images/default-image.jpg") : $item->user["profile"]}}" alt="">
+            <img class="w-14 h-14 rounded-full " src="{{strlen($item->user["profile"]) <= 0 ? asset("assets/images/default-image.jpg") : asset($item->user["profile"])}}" alt="">
             <div class="flex flex-col">
               <a href="/profile/{{$item->user["username"]}}"><span class="text-lg text-blue-500">{{$item->user["username"]}}</span></a>
               <span class="text-sm"> {{$item->user->first_name }} {{$item->user->last_name}}</span>

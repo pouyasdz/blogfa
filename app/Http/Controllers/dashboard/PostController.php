@@ -8,6 +8,7 @@ use App\Http\Requests\post\StoreRequest;
 use App\Http\Requests\post\UpdateRequest;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Can;
@@ -73,9 +74,25 @@ class PostController extends Controller
      */
     public function update(UpdateRequest $request, string $id)
     {
-        $result = Post::query()->findOrFail($id)->update([$request]);
+        $post = Post::query()->where("id", "=", $id)->firstOrFail();
+        $this->authorize('update', $post);
+        $filePath = $post->cover;
+        if($request->file("cover"))
+        {
+            $file = $request->file("cover");
+            $fileName = time().$file->getClientOriginalName();
+            $filePath = "uploads/images/$fileName";
+            $file->move("uploads/images", $fileName);
+        }
+
+        $result = Post::query()->findOrFail($id)->update([
+            "slug"=>$request["slug"],
+            "title"=>$request["title"],
+            "description"=>$request["description"],
+            "cover"=> $filePath
+        ]);
         if(!$result) return redirect()->back()->with("error","پست آپدیت نشد");
-        return redirect()->back(200);
+        return redirect()->back();
     }
 
     /**
@@ -83,9 +100,10 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        $result = Post::query()->findOrFail($id)->delete();
-        if($result) Comment::query()->where("to",$id)->delete();
-        if(!$result) return redirect()->back()->with("error","پست حذف نشد");
+        $post = Post::query()->findOrFail($id);
+        $this->authorize('delete', $post);
+        if($post) Comment::query()->where("to",$id)->delete() & $post->delete();
+        if(!$post) return redirect()->back()->with("error","پست حذف نشد");
         return redirect()->back();
     }
 }
