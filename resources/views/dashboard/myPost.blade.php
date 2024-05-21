@@ -10,7 +10,7 @@
 <main class="font-vazir h-screen">
 <div class=" text-gray-900 bg-gray-200 h-full">
     <div class="ml-auto p-4 flex">
-        <a href="{{route("dashboard-article-get")}}" class="bg-green-500 flex items-center justify-center rounded-lg px-2 text-white">ساخت جدید</a>
+        <a href="{{route("dashboard-article-get")}}" class="bg-blue-500 flex items-center justify-center rounded-lg px-2 text-white">ساخت جدید</a>
         <h1 class="ml-auto text-3xl">
             پست ها
         </h1>
