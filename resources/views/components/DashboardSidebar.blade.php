@@ -9,20 +9,6 @@
             'admin' => false,
         ],
         [
-            'title' => 'مدریت حساب ها',
-            'icon' => 'ri-group-line',
-            'iconFill' => 'ri-group-fill',
-            'link' => '/dashboard/manage-account',
-            'admin' => true,
-        ],
-        [
-            'title' => 'مدریت پست ها',
-            'icon' => 'ri-article-line',
-            'iconFill' => 'ri-article-fill',
-            'link' => '/dashboard/manage-posts',
-            'admin' => true,
-        ],
-        [
             'title' => 'پست های من',
             'icon' => 'ri-file-list-3-line',
             'iconFill' => 'ri-file-list-3-fill',
